@@ -127,6 +127,7 @@ jobs:
     environment:
       NODE_ENV: prod
     steps:
+      - checkout
       - skip/skip_unchanged:
           paths: frontend
       - yarn-linter:

@@ -170,7 +170,7 @@ workflows:
     triggers:
       - schedule:
           # jobs start at 00h00 every Monday, test made for master
-          cron: "0 0 * * 1"
+          cron: "0 0 * * 10"
           filters:
             branches:
               only:

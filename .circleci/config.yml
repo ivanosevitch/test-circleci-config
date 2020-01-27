@@ -79,8 +79,12 @@ commands:
         type: string
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/test_circleci_config/<< parameters.workspace >>
+      # yarn-audit is started with a cron.
+      # As such we cannot get the frontend dependencies from the workspace like we do with the other jobs. We need to re-install them.
+      - run:
+          working_directory: << parameters.workspace >>
+          name: Install front dependencies
+          command: yarn
       - run:
           working_directory: << parameters.workspace >>
           name: Check dependencies
